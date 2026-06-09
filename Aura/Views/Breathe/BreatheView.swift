@@ -17,6 +17,7 @@ struct BreatheView: View {
     @State private var scale: CGFloat = 0.55
     @State private var lastTick: Date?
     @State private var completedSeconds: Double = 0
+    @State private var idlePulse = false
 
     private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
@@ -67,12 +68,19 @@ struct BreatheView: View {
 
             Spacer()
 
-            BreathOrb(scale: 0.7, progress: 0)
+            BreathOrb(scale: idlePulse ? 0.74 : 0.64, progress: 0)
                 .frame(width: 230, height: 230)
                 .overlay {
                     Image(systemName: "wind")
                         .font(.system(size: 34, weight: .light))
                         .foregroundStyle(.white.opacity(0.9))
+                }
+                .accessibilityHidden(true)
+                .onAppear {
+                    guard !reduceMotion else { return }
+                    withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
+                        idlePulse = true
+                    }
                 }
 
             Spacer()
@@ -180,6 +188,9 @@ struct BreatheView: View {
         .foregroundStyle(.white)
         .contentTransition(.numericText())
         .animation(.snappy, value: engine?.phase)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(engine?.phase.verb ?? "")
+        .accessibilityValue("\(Int(ceil(engine?.phaseRemaining ?? 0))) seconds")
     }
 
     // MARK: Complete

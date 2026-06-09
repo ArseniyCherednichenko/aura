@@ -6,6 +6,10 @@ and a clean, testable core.
 
 > Made by Arseniy Cherednichenko.
 
+<p align="center">
+  <img src="docs/breathe.png" alt="Aura breathing screen" width="300">
+</p>
+
 ## Features
 
 - **Guided breathing** with four techniques — Box, 4-7-8, Calm, and Energize.

@@ -25,6 +25,31 @@ enum Stats {
         Streak.current(sessionDays: sessionDays(records, calendar: calendar), today: today, calendar: calendar)
     }
 
+    /// Minutes breathed on `today` only.
+    static func minutesToday(_ records: [SessionRecord], today: Date = Date(), calendar: Calendar = .current) -> Double {
+        let start = calendar.startOfDay(for: today)
+        return records
+            .filter { calendar.startOfDay(for: $0.endedAt) == start }
+            .reduce(0) { $0 + $1.seconds } / 60
+    }
+
+    /// Longest run of consecutive days that ever had a session.
+    static func longestStreak(_ records: [SessionRecord], calendar: Calendar = .current) -> Int {
+        let days = sessionDays(records, calendar: calendar).sorted()
+        guard !days.isEmpty else { return 0 }
+        var longest = 1
+        var run = 1
+        for i in 1..<days.count {
+            if let next = calendar.date(byAdding: .day, value: 1, to: days[i - 1]), next == days[i] {
+                run += 1
+            } else {
+                run = 1
+            }
+            longest = max(longest, run)
+        }
+        return longest
+    }
+
     /// `n` day-buckets ending today (oldest first), each with minutes + count.
     static func lastNDays(_ records: [SessionRecord], n: Int, today: Date = Date(), calendar: Calendar = .current) -> [DayStat] {
         let start = calendar.startOfDay(for: today)

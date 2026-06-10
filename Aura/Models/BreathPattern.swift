@@ -88,6 +88,25 @@ struct BreathPattern: Identifiable, Equatable, Sendable {
                 BreathStep(phase: .exhale, seconds: 2),
             ]
         ),
+        BreathPattern(
+            id: "coherent",
+            name: "Coherent",
+            subtitle: "Five and five. Settles the nervous system.",
+            steps: [
+                BreathStep(phase: .inhale, seconds: 5),
+                BreathStep(phase: .exhale, seconds: 5),
+            ]
+        ),
+        BreathPattern(
+            id: "deep",
+            name: "Deep",
+            subtitle: "Slow and full. For a proper reset.",
+            steps: [
+                BreathStep(phase: .inhale, seconds: 6),
+                BreathStep(phase: .holdIn, seconds: 2),
+                BreathStep(phase: .exhale, seconds: 7),
+            ]
+        ),
     ]
 
     static func pattern(id: String) -> BreathPattern {

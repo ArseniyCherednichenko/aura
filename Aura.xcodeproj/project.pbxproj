@@ -19,6 +19,7 @@
 		4902D9F1F2C89DA2E8639340 /* BreathOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670F1191DD79146A9737BA83 /* BreathOrb.swift */; };
 		56485A554A0FC1E5BDECB61F /* AmbientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D31B695D66D0EE214EFD7 /* AmbientBackground.swift */; };
 		5795A2576BB41DAF3400C7C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE90A435FE982E20336A41A /* RootView.swift */; };
+		6013A34DC9729DA8E2A53957 /* PatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FFE05DCC467B1BB33EBD50 /* PatternTests.swift */; };
 		696D1C9B33BCFF8D33B890DC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5343DA7EE270ACF826E13399 /* Settings.swift */; };
 		7702F5A9CE05D7ECF6CECBC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF3E4457439B9EF62BC280 /* OnboardingView.swift */; };
 		8342C5AFCACEBFA96A366A99 /* StreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F182B9B1617BCD9431F928 /* StreakTests.swift */; };
@@ -55,6 +56,7 @@
 		5CD552B5F09360B5BCABC896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		670F1191DD79146A9737BA83 /* BreathOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathOrb.swift; sourceTree = "<group>"; };
 		6D5DB64CD0D4AD9986B269B5 /* PatternPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPicker.swift; sourceTree = "<group>"; };
+		73FFE05DCC467B1BB33EBD50 /* PatternTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTests.swift; sourceTree = "<group>"; };
 		77C5E9882DBF7D3BF20C91B5 /* BreatheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreatheView.swift; sourceTree = "<group>"; };
 		7D94B6F52FD80F32C89EE586 /* BreathEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathEngine.swift; sourceTree = "<group>"; };
 		943D31B695D66D0EE214EFD7 /* AmbientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientBackground.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				39F5E00EDAB403661C85C9FA /* BreathEngineTests.swift */,
+				73FFE05DCC467B1BB33EBD50 /* PatternTests.swift */,
 				5B2E9E1066FB7E9B30B32183 /* StatsTests.swift */,
 				46F182B9B1617BCD9431F928 /* StreakTests.swift */,
 			);
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A39095D71B1D8B96C3DE3760 /* BreathEngineTests.swift in Sources */,
+				6013A34DC9729DA8E2A53957 /* PatternTests.swift in Sources */,
 				3F991FDC1C2F2A9F5BCCBC62 /* StatsTests.swift in Sources */,
 				8342C5AFCACEBFA96A366A99 /* StreakTests.swift in Sources */,
 			);

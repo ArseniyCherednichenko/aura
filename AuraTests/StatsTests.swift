@@ -41,4 +41,28 @@ final class StatsTests: XCTestCase {
         ]
         XCTAssertEqual(Stats.currentStreak(records, today: date(2026, 6, 10), calendar: cal), 2)
     }
+
+    func testMinutesToday() {
+        let records = [
+            SessionRecord(endedAt: date(2026, 6, 10, 9), seconds: 120),
+            SessionRecord(endedAt: date(2026, 6, 10, 20), seconds: 60),
+            SessionRecord(endedAt: date(2026, 6, 9), seconds: 300), // not today
+        ]
+        XCTAssertEqual(Stats.minutesToday(records, today: date(2026, 6, 10), calendar: cal), 3, accuracy: 0.0001)
+    }
+
+    func testLongestStreak() {
+        let records = [
+            SessionRecord(endedAt: date(2026, 6, 1), seconds: 60), // run of 3
+            SessionRecord(endedAt: date(2026, 6, 2), seconds: 60),
+            SessionRecord(endedAt: date(2026, 6, 3), seconds: 60),
+            SessionRecord(endedAt: date(2026, 6, 10), seconds: 60), // run of 2
+            SessionRecord(endedAt: date(2026, 6, 11), seconds: 60),
+        ]
+        XCTAssertEqual(Stats.longestStreak(records, calendar: cal), 3)
+    }
+
+    func testLongestStreakEmpty() {
+        XCTAssertEqual(Stats.longestStreak([], calendar: cal), 0)
+    }
 }

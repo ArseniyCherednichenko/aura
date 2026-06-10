@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
     @AppStorage(SettingsKey.sessionMinutes) private var sessionMinutes: Int = 3
@@ -6,6 +7,10 @@ struct SettingsView: View {
     @AppStorage(SettingsKey.haptics) private var haptics: Bool = true
     @AppStorage(SettingsKey.keepAwake) private var keepAwake: Bool = true
     @AppStorage(SettingsKey.appearance) private var appearance: Appearance = .system
+
+    @Environment(\.modelContext) private var context
+    @Query private var sessions: [BreathingSession]
+    @State private var showResetConfirm = false
 
     var body: some View {
         NavigationStack {
@@ -33,6 +38,13 @@ struct SettingsView: View {
                     .pickerStyle(.segmented)
                 }
 
+                Section("Data") {
+                    Button("Reset all sessions", role: .destructive) {
+                        showResetConfirm = true
+                    }
+                    .disabled(sessions.isEmpty)
+                }
+
                 Section {
                     LabeledContent("Version", value: "1.0")
                     LabeledContent("Made by", value: "Arseniy Cherednichenko")
@@ -41,6 +53,17 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .confirmationDialog("Delete all breathing history?",
+                                isPresented: $showResetConfirm,
+                                titleVisibility: .visible) {
+                Button("Delete everything", role: .destructive) {
+                    for session in sessions { context.delete(session) }
+                    try? context.save()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This removes every saved session, your streak, and your stats. It cannot be undone.")
+            }
         }
     }
 }

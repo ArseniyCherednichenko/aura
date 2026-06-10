@@ -12,14 +12,15 @@ and a clean, testable core.
 
 ## Features
 
-- **Guided breathing** with four techniques — Box, 4-7-8, Calm, and Energize.
+- **Guided breathing** with six techniques — Box, 4-7-8, Calm, Energize, Coherent, and Deep.
 - **Animated breath orb** that scales in time with each phase, over an ambient
   drifting-gradient background. Phase changes are reinforced with soft haptics.
 - **Sessions, streaks, and stats** — every session is saved with SwiftData; the
   Stats tab shows your current streak, total time, session count, and a
-  seven-day Swift Charts bar chart.
+  seven-day Swift Charts bar chart, and the Breathe screen greets you with today's
+  minutes and streak.
 - **Thoughtful settings** — session length, default pattern, haptics, keep-screen-awake,
-  and Light/Dark/System appearance.
+  Light/Dark/System appearance, and a confirm-gated reset for your history.
 - **Onboarding**, empty states, and **Reduce Motion** support throughout.
 
 ## Architecture

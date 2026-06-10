@@ -44,7 +44,7 @@ struct BreatheView: View {
 
     var body: some View {
         ZStack {
-            AmbientBackground(tint: Theme.phaseTint(engine?.phase ?? .inhale))
+            AuroraMesh(phase: engine?.phase ?? .inhale)
 
             switch mode {
             case .idle: idleView
@@ -120,9 +120,9 @@ struct BreatheView: View {
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .background(Theme.orbGradient, in: Capsule())
-                        .foregroundStyle(.black)
                 }
+                .buttonStyle(.glassProminent)
+                .tint(Theme.accent)
                 .padding(.horizontal)
             }
             .padding(.bottom, 12)
@@ -136,21 +136,28 @@ struct BreatheView: View {
             Text("Session length")
                 .font(.caption)
                 .foregroundStyle(.secondary)
-            HStack(spacing: 10) {
-                ForEach([1, 3, 5, 10], id: \.self) { minutes in
-                    let selected = sessionMinutes == minutes
-                    Button {
-                        sessionMinutes = minutes
-                        Haptics.tap(enabled: haptics)
-                    } label: {
-                        Text("\(minutes) min")
-                            .font(.subheadline.weight(selected ? .semibold : .regular))
-                            .padding(.vertical, 9)
-                            .frame(maxWidth: .infinity)
-                            .background(selected ? Color.white.opacity(0.16) : Color.white.opacity(0.05), in: Capsule())
-                            .overlay(Capsule().stroke(selected ? Theme.accent : .clear, lineWidth: 1))
+            GlassEffectContainer(spacing: 10) {
+                HStack(spacing: 10) {
+                    ForEach([1, 3, 5, 10], id: \.self) { minutes in
+                        let selected = sessionMinutes == minutes
+                        Button {
+                            sessionMinutes = minutes
+                            Haptics.tap(enabled: haptics)
+                        } label: {
+                            Text("\(minutes) min")
+                                .font(.subheadline.weight(selected ? .semibold : .regular))
+                                .padding(.vertical, 9)
+                                .frame(maxWidth: .infinity)
+                                .glassEffect(
+                                    selected
+                                        ? .regular.tint(Theme.accent.opacity(0.4)).interactive()
+                                        : .regular.interactive(),
+                                    in: .capsule
+                                )
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(.white)
                     }
-                    .foregroundStyle(.white)
                 }
             }
         }
@@ -178,21 +185,25 @@ struct BreatheView: View {
                 .font(.subheadline.monospacedDigit())
                 .foregroundStyle(.white.opacity(0.6))
 
-            HStack(spacing: 16) {
-                Button(action: togglePause) {
-                    Label(mode == .paused ? "Resume" : "Pause",
-                          systemImage: mode == .paused ? "play.fill" : "pause.fill")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .background(Color.white.opacity(0.12), in: Capsule())
-                }
-                Button(action: endEarly) {
-                    Label("End", systemImage: "stop.fill")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .background(Color.white.opacity(0.12), in: Capsule())
+            GlassEffectContainer(spacing: 16) {
+                HStack(spacing: 16) {
+                    Button(action: togglePause) {
+                        Label(mode == .paused ? "Resume" : "Pause",
+                              systemImage: mode == .paused ? "play.fill" : "pause.fill")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 15)
+                            .glassEffect(.regular.interactive(), in: .capsule)
+                    }
+                    .buttonStyle(.plain)
+                    Button(action: endEarly) {
+                        Label("End", systemImage: "stop.fill")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 15)
+                            .glassEffect(.regular.interactive(), in: .capsule)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .foregroundStyle(.white)
@@ -229,6 +240,7 @@ struct BreatheView: View {
                     .frame(width: 150, height: 150)
                     .blur(radius: 45)
                     .scaleEffect(glow ? 1.12 : 0.82)
+                SparkleBurst()
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 64))
                     .foregroundStyle(Theme.orbGradient)
@@ -248,9 +260,9 @@ struct BreatheView: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Theme.orbGradient, in: Capsule())
-                    .foregroundStyle(.black)
             }
+            .buttonStyle(.glassProminent)
+            .tint(Theme.accent)
             .padding(.horizontal)
             .padding(.bottom, 12)
         }

@@ -17,8 +17,8 @@
 		3F991FDC1C2F2A9F5BCCBC62 /* StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2E9E1066FB7E9B30B32183 /* StatsTests.swift */; };
 		40D7BDB58FC82255BD253EB2 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB2841C0ED8DDCA5DB7FF8 /* Format.swift */; };
 		4902D9F1F2C89DA2E8639340 /* BreathOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670F1191DD79146A9737BA83 /* BreathOrb.swift */; };
-		56485A554A0FC1E5BDECB61F /* AmbientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D31B695D66D0EE214EFD7 /* AmbientBackground.swift */; };
 		5795A2576BB41DAF3400C7C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE90A435FE982E20336A41A /* RootView.swift */; };
+		5DE4235A175726F6AB84E53D /* SparkleBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFE206D12A260380413AB06 /* SparkleBurst.swift */; };
 		6013A34DC9729DA8E2A53957 /* PatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FFE05DCC467B1BB33EBD50 /* PatternTests.swift */; };
 		696D1C9B33BCFF8D33B890DC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5343DA7EE270ACF826E13399 /* Settings.swift */; };
 		7702F5A9CE05D7ECF6CECBC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF3E4457439B9EF62BC280 /* OnboardingView.swift */; };
@@ -31,6 +31,7 @@
 		E2210705A0114392408BC5E3 /* AuraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21ABEC5EF698C64577CDF3E /* AuraApp.swift */; };
 		E661C1759A9BA4FF269A9700 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AD52D37682A835EB879E /* StatCard.swift */; };
 		E9500965B58D7972E87F5D5E /* BreatheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5E9882DBF7D3BF20C91B5 /* BreatheView.swift */; };
+		F9820BFA325E2B0108EB6B12 /* AuroraMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF4E3C2F0C73971E89B7E6A /* AuroraMesh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		39F5E00EDAB403661C85C9FA /* BreathEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathEngineTests.swift; sourceTree = "<group>"; };
 		46F182B9B1617BCD9431F928 /* StreakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTests.swift; sourceTree = "<group>"; };
 		4A9E59AC258B2C2BA91E5EF7 /* Aura.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Aura.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DF4E3C2F0C73971E89B7E6A /* AuroraMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraMesh.swift; sourceTree = "<group>"; };
 		5343DA7EE270ACF826E13399 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5B2E9E1066FB7E9B30B32183 /* StatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTests.swift; sourceTree = "<group>"; };
 		5CD552B5F09360B5BCABC896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,7 +61,6 @@
 		73FFE05DCC467B1BB33EBD50 /* PatternTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTests.swift; sourceTree = "<group>"; };
 		77C5E9882DBF7D3BF20C91B5 /* BreatheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreatheView.swift; sourceTree = "<group>"; };
 		7D94B6F52FD80F32C89EE586 /* BreathEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathEngine.swift; sourceTree = "<group>"; };
-		943D31B695D66D0EE214EFD7 /* AmbientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientBackground.swift; sourceTree = "<group>"; };
 		98407EE30C12715C7FCF88EA /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		C730AE0A733B80A402950EF2 /* BreathPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPattern.swift; sourceTree = "<group>"; };
 		CDBB5E998D4F86CB52F43A02 /* WeekChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekChart.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		D21ABEC5EF698C64577CDF3E /* AuraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraApp.swift; sourceTree = "<group>"; };
 		D414E397487C0395DF1D2468 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		D8CF4CF9E7D0954FEFB3E954 /* AuraTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AuraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCFE206D12A260380413AB06 /* SparkleBurst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleBurst.swift; sourceTree = "<group>"; };
 		E3E9AD52D37682A835EB879E /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
 		FAAB2841C0ED8DDCA5DB7FF8 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		FAE90A435FE982E20336A41A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -183,10 +185,11 @@
 		C5882B37C9A5CFFBA4E08603 /* Breathe */ = {
 			isa = PBXGroup;
 			children = (
-				943D31B695D66D0EE214EFD7 /* AmbientBackground.swift */,
+				4DF4E3C2F0C73971E89B7E6A /* AuroraMesh.swift */,
 				77C5E9882DBF7D3BF20C91B5 /* BreatheView.swift */,
 				670F1191DD79146A9737BA83 /* BreathOrb.swift */,
 				6D5DB64CD0D4AD9986B269B5 /* PatternPicker.swift */,
+				DCFE206D12A260380413AB06 /* SparkleBurst.swift */,
 			);
 			path = Breathe;
 			sourceTree = "<group>";
@@ -311,8 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56485A554A0FC1E5BDECB61F /* AmbientBackground.swift in Sources */,
 				E2210705A0114392408BC5E3 /* AuraApp.swift in Sources */,
+				F9820BFA325E2B0108EB6B12 /* AuroraMesh.swift in Sources */,
 				B5BC410DAAC4A2B7F07E3811 /* BreathEngine.swift in Sources */,
 				4902D9F1F2C89DA2E8639340 /* BreathOrb.swift in Sources */,
 				D4DABBDAA911418336641784 /* BreathPattern.swift in Sources */,
@@ -325,6 +328,7 @@
 				5795A2576BB41DAF3400C7C3 /* RootView.swift in Sources */,
 				696D1C9B33BCFF8D33B890DC /* Settings.swift in Sources */,
 				AD435B42EA5CE5A7C468AC25 /* SettingsView.swift in Sources */,
+				5DE4235A175726F6AB84E53D /* SparkleBurst.swift in Sources */,
 				E661C1759A9BA4FF269A9700 /* StatCard.swift in Sources */,
 				1FA57F52D20F37F69235F32E /* Stats.swift in Sources */,
 				10637203F6A4B4AB4CD3C669 /* StatsView.swift in Sources */,
@@ -459,7 +463,7 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -530,7 +534,7 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;

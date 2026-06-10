@@ -10,7 +10,13 @@ struct BreatheView: View {
     @AppStorage(SettingsKey.haptics) private var haptics: Bool = true
     @AppStorage(SettingsKey.keepAwake) private var keepAwake: Bool = true
 
+    @Query(sort: \BreathingSession.endedAt, order: .reverse) private var sessions: [BreathingSession]
+
     private enum Mode { case idle, running, paused, complete }
+
+    private static let encouragements = [
+        "Nicely done", "Well breathed", "That is a win", "Calm restored", "Beautifully steady",
+    ]
 
     @State private var mode: Mode = .idle
     @State private var engine: BreathEngine?
@@ -18,10 +24,23 @@ struct BreatheView: View {
     @State private var lastTick: Date?
     @State private var completedSeconds: Double = 0
     @State private var idlePulse = false
+    @State private var glow = false
+    @State private var completionTitle = "Nicely done"
 
     private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
     private var pattern: BreathPattern { BreathPattern.pattern(id: patternID) }
+
+    private var todaySummary: String? {
+        guard !sessions.isEmpty else { return nil }
+        let records = sessions.map(\.record)
+        let minutes = Int(Stats.minutesToday(records).rounded())
+        let streak = Stats.currentStreak(records)
+        var parts: [String] = []
+        if minutes > 0 { parts.append("\(minutes) min today") }
+        if streak > 0 { parts.append("\(streak) day streak") }
+        return parts.isEmpty ? nil : parts.joined(separator: "   ·   ")
+    }
 
     var body: some View {
         ZStack {
@@ -63,6 +82,12 @@ struct BreatheView: View {
                 Text("Take a few minutes to breathe.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                if let summary = todaySummary {
+                    Text(summary)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.accent)
+                        .padding(.top, 4)
+                }
             }
             .padding(.top, 24)
 
@@ -198,10 +223,21 @@ struct BreatheView: View {
     private var completeView: some View {
         VStack(spacing: 22) {
             Spacer()
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(Theme.orbGradient)
-            Text("Nicely done")
+            ZStack {
+                Circle()
+                    .fill(Theme.orbTop.opacity(0.35))
+                    .frame(width: 150, height: 150)
+                    .blur(radius: 45)
+                    .scaleEffect(glow ? 1.12 : 0.82)
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 64))
+                    .foregroundStyle(Theme.orbGradient)
+            }
+            .onAppear {
+                guard !reduceMotion else { return }
+                withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) { glow = true }
+            }
+            Text(completionTitle)
                 .font(.title.weight(.bold))
             Text("You breathed for \(Format.minutes(completedSeconds / 60)).")
                 .font(.subheadline)
@@ -252,6 +288,7 @@ struct BreatheView: View {
         guard let engine else { reset(); return }
         if engine.totalElapsed >= 60 {
             completedSeconds = engine.totalElapsed
+            completionTitle = Self.encouragements.randomElement() ?? "Nicely done"
             save(seconds: engine.totalElapsed)
             withAnimation { mode = .complete }
         } else {
@@ -262,6 +299,7 @@ struct BreatheView: View {
     private func finish() {
         guard let engine else { return }
         completedSeconds = engine.sessionLength
+        completionTitle = Self.encouragements.randomElement() ?? "Nicely done"
         save(seconds: engine.sessionLength)
         Haptics.success(enabled: haptics)
         withAnimation { mode = .complete }

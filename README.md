@@ -12,6 +12,7 @@ and a clean, testable core.
 
 ## Features
 
+- **iOS 26 design** — a living `MeshGradient` aurora that breathes behind the UI, and **Liquid Glass** controls and cards throughout.
 - **Guided breathing** with six techniques — Box, 4-7-8, Calm, Energize, Coherent, and Deep.
 - **Animated breath orb** that scales in time with each phase, over an ambient
   drifting-gradient background. Phase changes are reinforced with soft haptics.
@@ -53,13 +54,13 @@ xcodegen generate
 open Aura.xcodeproj
 ```
 
-Requires Xcode 16+ and iOS 17+ (SwiftData, Observation, Swift Charts).
+Requires Xcode 26+ and iOS 26+ (Liquid Glass, animated `MeshGradient`, SwiftData, Swift Charts).
 
 ## Tests
 
 ```bash
 xcodebuild -project Aura.xcodeproj -scheme Aura \
-  -destination 'platform=iOS Simulator,name=iPhone 16' test
+  -destination 'platform=iOS Simulator,name=iPhone 17' test
 ```
 
 17 tests covering phase progression, session completion, multi-phase ticks,

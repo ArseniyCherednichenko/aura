@@ -41,7 +41,7 @@ struct StatsView: View {
                     WeekChart(days: Stats.lastNDays(records, n: 7))
                 }
                 .padding(16)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
+                .glassEffect(in: .rect(cornerRadius: 20))
 
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Recent")
@@ -67,7 +67,7 @@ struct StatsView: View {
                     }
                 }
                 .padding(16)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
+                .glassEffect(in: .rect(cornerRadius: 20))
             }
             .padding()
         }

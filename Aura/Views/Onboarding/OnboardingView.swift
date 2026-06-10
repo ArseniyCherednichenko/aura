@@ -26,7 +26,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            AmbientBackground(tint: Theme.orbTop)
+            AuroraMesh(phase: .inhale)
 
             VStack {
                 TabView(selection: $page) {
@@ -62,9 +62,9 @@ struct OnboardingView: View {
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .background(Theme.orbGradient, in: Capsule())
-                        .foregroundStyle(.black)
                 }
+                .buttonStyle(.glassProminent)
+                .tint(Theme.accent)
                 .padding(.horizontal)
                 .padding(.bottom, 24)
             }
